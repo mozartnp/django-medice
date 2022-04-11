@@ -29,7 +29,7 @@
 
                             <h3 class="text-center" data-info="textoLogin">Login</h3>
 
-                            {% for field in form_login.visible_fields %}
+                            {% for field in form.visible_fields %}
                                 <div class="form-group col-sm-5" data-info="campo_{{ field.name }}">
                                     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                                     {{ field|add_class:"form-control" }}
