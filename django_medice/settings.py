@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     # 3 Party Apps
     'widget_tweaks',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
