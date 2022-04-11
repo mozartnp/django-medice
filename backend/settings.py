@@ -1,5 +1,3 @@
-import os
-import sys
 from pathlib import Path
 
 from decouple import config
@@ -18,6 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'custom_user.User'
 
 # Application definition
 
@@ -29,15 +28,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # System Apps
-    'backend.custom_user',
-
     # 3 Party Apps
     'widget_tweaks',
     'django_extensions',
-
     # System Apps
+    'backend.custom_user',
     'backend.core',
     'backend.medic',
     'backend.patient',
