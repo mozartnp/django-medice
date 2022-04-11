@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 def user_type():
     '''
-    Tipos de escolha do usuario 
+    Tipos de escolha do usuario
     '''
     choice = [
         ('MEDI', _('Médico')),
