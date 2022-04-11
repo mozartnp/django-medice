@@ -1,13 +1,13 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from backend.custom_user.models import CustomUser
+from backend.custom_user.models import User
 
 
 class SignupForm(UserCreationForm):
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = (
             'email',
             'user_type',
@@ -37,17 +37,3 @@ class SignupForm(UserCreationForm):
                 'placeholder': 'Repita sua senha.',
             }
         )
-
-
-class AutencicandoUser(forms.Form):
-    email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={'placeholder': "Digite seu e-mail"}
-        )
-    )
-    password = forms.CharField(
-        label="Senha",
-        widget=forms.PasswordInput(
-            attrs={'placeholder': "Digite sua senha"}
-        )
-    )

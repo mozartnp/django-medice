@@ -53,7 +53,7 @@ class CustomUserManager(BaseUserManager):
 # TODO Como faria a questão da escolha do usuario para o superuser? Seria qual tipo, fazer um tipo extra que seria todos outros ao mesmo tempo?
 
 
-class CustomUser(AbstractBaseUser):
+class User(AbstractBaseUser):
     '''
     Modelo para criar um usuario customizado pelo django
     '''
