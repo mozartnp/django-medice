@@ -30,16 +30,16 @@
                         <h3 class="text-center" data-info="textoLogin">Login</h3>
                         
                         {% for field in form_login.visible_fields %}
-                            <div class="form-group col-sm-5" data-info="campo_{{ field.name }}">
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                {{ field|add_class:"form-control" }}
-                            </div>
-                            <div class="w-100"></div>
+                        <div class="form-group col-sm-5" data-info="campo_{{ field.name }}">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field|add_class:"form-control" }}
+                        </div>
+                        <div class="w-100"></div>
                         {% endfor %}
 
                         <div class="w-100"></div>
                         <div class="col-sm-2 botaoVerde" >
-                            <button data-info="botaoLogin" class="w-100 btn btn-outline-primary" type="submit">Logar</button>
+                        <button data-info="botaoLogin" class="w-100 btn btn-outline-primary" type="submit">Logar</button>
                         </div> 
     
                     </form>
