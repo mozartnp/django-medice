@@ -30,7 +30,7 @@
                     </section>
 
                     <section>
-                        <form method="post" class="row justify-content-center" action=".">
+                        <form method="POST" class="row justify-content-center" action=".">
                             {% csrf_token %}
 
                             {% for field in form.visible_fields %}

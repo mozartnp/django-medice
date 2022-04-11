@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
 
@@ -12,7 +13,7 @@ class AuthSignup(CreateView):
     model = CustomUser
     form_class = SignupForm
     template_name = "custom_user/signup.html"
-    success_url = "homepage"  # FIXME mudar
+    success_url = reverse_lazy('core:index')
 
 
 class AuthLogin(LoginView):
