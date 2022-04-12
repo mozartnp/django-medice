@@ -6,9 +6,15 @@
         <div class="col-lg-9 offset-lg-1">
             <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end">
                 <ul class="navbar-nav">
-                    <div class="nav-item" data-info="botaoLogin">
-                        <a class="btn btn-outline-primary" role="button" href="{% url 'custom_user:login' %}">Login</a>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="nav-item" data-info="botaoLogin">
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'custom_user:logout' %}">Logout</a>
+                        </div>
+                    {% else %}
+                        <div class="nav-item" data-info="botaoLogin">
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'custom_user:login' %}">Login</a>
+                        </div>
+                    {% endif %}
                     <div class="nav-item" style="margin-left: 10px;" data-info="botaoCadastro">
                         <a class="btn btn-outline-success" role="button" href="{% url 'custom_user:signup' %}">Cadastro</a>
                     </div>
