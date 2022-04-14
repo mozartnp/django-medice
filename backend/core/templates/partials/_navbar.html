@@ -8,15 +8,15 @@
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <div class="nav-item" data-info="botaoLogin">
-                            <a class="btn btn-outline-primary" role="button" href="{% url 'custom_user:logout' %}">Logout</a>
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'accounts:logout' %}">Logout</a>
                         </div>
                     {% else %}
                         <div class="nav-item" data-info="botaoLogin">
-                            <a class="btn btn-outline-primary" role="button" href="{% url 'custom_user:login' %}">Login</a>
+                            <a class="btn btn-outline-primary" role="button" href="{% url 'accounts:login' %}">Login</a>
                         </div>
                     {% endif %}
                     <div class="nav-item" style="margin-left: 10px;" data-info="botaoCadastro">
-                        <a class="btn btn-outline-success" role="button" href="{% url 'custom_user:signup' %}">Cadastro</a>
+                        <a class="btn btn-outline-success" role="button" href="{% url 'accounts:signup' %}">Cadastro</a>
                     </div>
                 </ul>
             </nav>

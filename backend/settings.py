@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'custom_user.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_extensions',
     # System Apps
-    'backend.custom_user',
+    'backend.accounts',
     'backend.core',
     'backend.medic',
     'backend.patient',

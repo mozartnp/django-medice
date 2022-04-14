@@ -1,4 +1,4 @@
-# django-medice
+# medical-exams
 
 Projeto de exames médicos.
 
@@ -17,12 +17,18 @@ Projeto de exames médicos.
 * Rode as migrações.
 
 ```
-git clone https://github.com/mozartnp/django-medice.git
-cd django-medice
+git clone https://github.com/mozartnp/medical-exams.git
+cd medical-exams
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
-python manage.py createsuperuser --username="admin" --email=""
+
+python manage.py createsuperuser
+
+Email: admin@email.com
+User type: PACI
+Password: 
+Password (again): 
 ```

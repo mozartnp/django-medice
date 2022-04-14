@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from backend.custom_user.models import User
+from backend.accounts.models import User
 
 
 class SignupForm(UserCreationForm):
