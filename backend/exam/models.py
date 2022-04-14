@@ -67,6 +67,6 @@ def medica_specialty():
 # TODO como ter um id diferenciado por exemplo para medico MD01.
 
 
-class Medic(models.Model):
+class Doctor(models.Model):
     specialty = models.CharField(max_length=3, choices=medica_specialty())
     price_consultation = models.DecimalField(max_digits=8, decimal_places=2)
