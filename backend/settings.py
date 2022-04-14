@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     # System Apps
     'backend.accounts',
     'backend.core',
-    'backend.medic',
+    'backend.exam',
     'backend.patient',
 ]
 
