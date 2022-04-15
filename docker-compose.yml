@@ -63,6 +63,7 @@ services:
       - exams
 
   mailhog:
+    container_name: mailhog
     image: mailhog/mailhog
     logging:
       driver: 'none'  # disable saving logs

@@ -110,7 +110,7 @@ DATABASES = {
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 
@@ -146,7 +146,7 @@ USE_TZ = True
 
 
 # Arquivos estaticos
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 
 # Default primary key field type
