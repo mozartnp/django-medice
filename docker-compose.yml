@@ -16,7 +16,36 @@ services:
     ports:
       - 5433:5432  # repare na porta externa 5433
     networks:
-      - postgres
+      - exams
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    hostname: app
+    stdin_open: true
+    expose:
+      - '8000'
+    volumes:
+      - .env:/app/.env
+      - /tmp:/tmp
+    command: bash -c "gunicorn backend.wsgi:application -b 0.0.0.0:8000"
+    networks:
+      - exams
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    hostname: nginx
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - exams
 
   pgadmin:
     container_name: pgadmin
@@ -31,7 +60,7 @@ services:
     ports:
       - 5050:80
     networks:
-      - postgres
+      - exams
 
   mailhog:
     container_name: mailhog
@@ -47,4 +76,4 @@ volumes:
   pgadmin:
 
 networks:
-  postgres:
+  exams:
