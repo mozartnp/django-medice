@@ -9,7 +9,7 @@ https://hub.docker.com/ é um site que contém as imagens oficiais de vários co
 Assista este video
 
 <a href="https://youtu.be/MeFyp4VnNx0">
-    <img src="../img/youtube.png">
+    <img src="./img/youtube.png">
 </a>
 
 > Faça suas anotações dos comandos.
@@ -28,21 +28,21 @@ docker-compose --version
 #### Introdução ao Docker com Gomex
 
 <a href="https://youtu.be/lEPTR2AbRto">
-    <img src="../img/youtube.png">
+    <img src="./img/youtube.png">
 </a>
 
 
 #### Introdução ao Docker-compose com Gomex
 
 <a href="https://youtu.be/CByr4db4shQ">
-    <img src="../img/youtube.png">
+    <img src="./img/youtube.png">
 </a>
 
 
 #### Dica #58 - Rodando PostgreSQL com Docker + Portainer + pgAdmin + Django local para desenvolvimento
 
 <a href="https://youtu.be/aWZDFKJz7X8">
-    <img src="../img/youtube.png">
+    <img src="./img/youtube.png">
 </a>
 
 
@@ -69,7 +69,7 @@ docker run -d \
 portainer/portainer
 ```
 
-![img/portainer.png](img/portainer.png)
+![img/portainer.png](./img/portainer.png)
 
 
 ## MailHog
