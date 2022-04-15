@@ -130,7 +130,8 @@ DATABASES = {
         'PASSWORD': config('POSTGRES_PASSWORD', 'postgres'),
         # 'db' caso exista um serviço com esse nome.
         'HOST': config('DB_HOST', '127.0.0.1'),
-        'PORT': '5432',  # <-- mude para 5432
+        'PORT': '5433',  # <-- para desenvolvimento
+        # 'PORT': '5432',  # <-- mude para 5432
     },
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -160,7 +161,7 @@ services:
     ports:
       - 5433:5432  # repare na porta externa 5433
     networks:
-      - postgres
+      - exams
 
   pgadmin:
     container_name: pgadmin
@@ -175,7 +176,7 @@ services:
     ports:
       - 5050:80
     networks:
-      - postgres
+      - exams
 
   mailhog:
     image: mailhog/mailhog
@@ -184,13 +185,15 @@ services:
     ports:
       - 1025:1025 # smtp server
       - 8025:8025 # web ui
+    networks:
+      - exams
 
 volumes:
   pgdata:  # mesmo nome do volume externo definido na linha 10
   pgadmin:
 
 networks:
-  postgres:
+  exams:
 ```
 
 ### Subindo os containers
