@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from decouple import config
+from decouple import Csv, config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -38,8 +38,14 @@ INSTALLED_APPS = [
     'backend.patient',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://0.0.0.0:8000'
+]
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -91,7 +97,7 @@ DATABASES = {
         'PASSWORD': config('POSTGRES_PASSWORD', 'postgres'),
         # 'db' caso exista um serviço com esse nome.
         'HOST': config('DB_HOST', '127.0.0.1'),
-        'PORT': '5433',
+        'PORT': '5432',
     },
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
