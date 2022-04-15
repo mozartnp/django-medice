@@ -132,7 +132,6 @@ dmypy.json
 
 media/
 staticfiles/
-static/
 .idea
 .ipynb_checkpoints/
 .vscode
