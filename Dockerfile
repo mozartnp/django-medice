@@ -14,5 +14,6 @@ RUN pip install -U pip && pip install -r requirements.txt
 COPY manage.py .
 COPY backend backend
 
+CMD python manage.py migrate --no-input
 CMD python manage.py collectstatic --no-input
 CMD gunicorn backend.wsgi:application -b 0.0.0.0:8000
