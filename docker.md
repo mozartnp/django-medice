@@ -112,7 +112,7 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 ### Produção
 
-![img/docker_02_prod_v2.png](img/docker_02_prod_v2.png)
+![img/docker_02_prod.png](img/docker_02_prod.png)
 
 
 ### Desenvolvimento
