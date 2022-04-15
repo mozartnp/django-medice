@@ -101,3 +101,17 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 ```
+
+## Montando vários containers com docker-compose
+
+
+### Desenvolvimento
+
+![img/docker_01_dev.png](img/docker_01_dev.png)
+
+
+### Produção
+
+![img/docker_02_prod.png](img/docker_02_prod.png)
+
+
