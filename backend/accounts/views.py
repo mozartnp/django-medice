@@ -19,12 +19,12 @@ class AuthSignup(CreateView):
         Define o redirect dependendo do tipo de usuário.
         '''
         if self.object.user_type == 'MEDI':
-            return reverse_lazy('core:index')
+            return reverse_lazy('patient:doctor_list')
 
         if self.object.user_type == 'PACI':
-            return reverse_lazy('accounts:signup')
+            return reverse_lazy('patient:patient_list')
 
-        return reverse_lazy('accounts:login')
+        return reverse_lazy('core:index')
 
 
 class AuthLogin(LoginView):
@@ -35,9 +35,9 @@ class AuthLogin(LoginView):
         Define o redirect dependendo do tipo de usuário.
         '''
         if self.request.user.user_type == 'MEDI':
-            return reverse_lazy('core:index')
+            return reverse_lazy('patient:doctor_list')
 
         if self.request.user.user_type == 'PACI':
-            return reverse_lazy('accounts:signup')
+            return reverse_lazy('patient:patient_list')
 
-        return reverse_lazy('accounts:login')
+        return reverse_lazy('core:index')
