@@ -107,12 +107,18 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 ### Desenvolvimento
 
+#### Django rodando localmente
+
 ![img/docker_01_dev.png](img/docker_01_dev.png)
+
+#### Django rodando dentro do Docker
+
+![img/docker_02_dev.png](img/docker_02_dev.png)
 
 
 ### Produção
 
-![img/docker_02_prod_v2.png](img/docker_02_prod_v2.png)
+![img/docker_03_prod.png](img/docker_03_prod.png)
 
 
 ### Desenvolvimento
