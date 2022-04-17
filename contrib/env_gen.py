@@ -12,6 +12,7 @@ size = 20
 password = "".join(random.sample(chars, size))
 
 CONFIG_STRING = """
+USE_DOCKER=True
 DEBUG=True
 SECRET_KEY=%s
 ALLOWED_HOSTS=127.0.0.1,.localhost,0.0.0.0
@@ -21,7 +22,7 @@ POSTGRES_DB=db
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 #DB_HOST=localhost
-DB_HOST=db
+#DB_HOST=db
 
 # MYSQL
 #NAME=

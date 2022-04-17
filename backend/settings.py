@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://0.0.0.0:8000'
+    'http://0.0.0.0:8001'
 ]
 
 MIDDLEWARE = [
@@ -96,6 +96,8 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 #     }
 # }
 
+USE_DOCKER = config('USE_DOCKER', default=False, cast=bool)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -103,9 +105,11 @@ DATABASES = {
         'USER': config('POSTGRES_USER', 'postgres'),
         'PASSWORD': config('POSTGRES_PASSWORD', 'postgres'),
         # 'db' caso exista um serviço com esse nome.
-        'HOST': config('DB_HOST', '127.0.0.1'),
+        # 'HOST': config('DB_HOST', '127.0.0.1'),
+        'HOST': 'db' if USE_DOCKER else 'localhost',
         # 'PORT': '5433',  # <-- para desenvolvimento
-        'PORT': '5432',  # <-- mude para 5432
+        # 'PORT': '5432',  # <-- mude para 5432
+        'PORT': 5432 if USE_DOCKER else 5433
     },
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
