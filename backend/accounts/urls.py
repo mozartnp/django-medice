@@ -1,13 +1,25 @@
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from .views import AuthLogin, AuthSignup
+from backend.accounts import views as v
 
-app_name = 'accounts'
+# Se usar app_name vai dar erro de redirect em PasswordResetView.
+# app_name = 'accounts'
+
 
 urlpatterns = [
-    # path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('login/', AuthLogin.as_view(), name='login'),
+    # path('login/', v.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('login/', v.AuthLogin.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('signup/', AuthSignup.as_view(), name='signup'),
+    path('signup/', v.AuthSignup.as_view(), name='signup'),
+    path(
+        'password_reset/',
+        v.MyPasswordReset.as_view(),
+        name='password_reset'
+    ),
+    path(
+        'reset/<uidb64>/<token>/',
+        v.MyPasswordResetConfirm.as_view(),
+        name='password_reset_confirm'
+    ),
 ]
