@@ -588,7 +588,7 @@ CELERY_RESULT_BACKEND = 'django-db'
 
 Crie `tasks.py` na app `core`
 
-touch `backend/core/tasks.py`
+`touch backend/core/tasks.py`
 
 ```python
 # core/tasks.py
