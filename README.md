@@ -52,11 +52,11 @@ sed -i "s/USE_DOCKER=False/USE_DOCKER=True/" .env
 docker-compose up --build -d
 
 # migração
-docker container exec -it app python manage.py migrate
+docker container exec -it exams_app python manage.py migrate
 
 # crie super usuários
-docker container exec -it app python manage.py createsuperuser --email="admin@email.com" --user_type="MEDI"
-docker container exec -it app python manage.py createsuperuser --email="mozart@email.com" --user_type="PACI"
+docker container exec -it exams_app python manage.py createsuperuser --email="admin@email.com" --user_type="MEDI"
+docker container exec -it exams_app python manage.py createsuperuser --email="mozart@email.com" --user_type="PACI"
 ```
 
 Com Docker o projeto roda na porta

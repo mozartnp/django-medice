@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # 3 Party Apps
     'widget_tweaks',
     'django_extensions',
+    'django_celery_results',
     # System Apps
     'backend.accounts',
     'backend.core',
@@ -73,10 +74,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+USE_DOCKER = config('USE_DOCKER', default=False, cast=bool)
+
+
+if USE_DOCKER:
+    # container_name on Docker
+    EMAIL_HOST = config('EMAIL_HOST', 'exams_mailhog')
+else:
+    EMAIL_HOST = config('EMAIL_HOST', '0.0.0.0')  # localhost
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
-EMAIL_HOST = config('EMAIL_HOST', '0.0.0.0')  # localhost
 EMAIL_PORT = config('EMAIL_PORT', 1025, cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', '')
@@ -95,8 +104,6 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 #         'PORT': '3306',
 #     }
 # }
-
-USE_DOCKER = config('USE_DOCKER', default=False, cast=bool)
 
 DATABASES = {
     'default': {
@@ -163,3 +170,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps'))
 
 LOGOUT_REDIRECT_URL = 'core:index'
+
+# CELERY
+
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379'  # Docker
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# Django-Celery-results
+CELERY_RESULT_BACKEND = 'django-db'

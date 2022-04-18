@@ -1,13 +1,17 @@
 asgiref==3.5.0
 autopep8==1.6.0
+celery==5.2.6
+django-celery-results==2.3.1
 django-extensions==3.1.5
 django-utils-six==2.0
 django-widget-tweaks==1.4.*
 Django==4.0.*
 djhtml==1.5.0
+flower==1.0.0
 gunicorn
 isort==5.10.1
 psycopg2-binary==2.9.3
 python-decouple==3.6
+redis==4.2.2
 sqlparse==0.4.2
 whitenoise==6.0.0

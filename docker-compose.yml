@@ -1,8 +1,8 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  database:
-    container_name: db
+  db:
+    container_name: exams_db
     image: postgres:13.4-alpine
     restart: always
     user: postgres  # importante definir o usuário
@@ -18,11 +18,18 @@ services:
     networks:
       - exams
 
+  redis:
+    container_name: exams_redis
+    image: 'redis:alpine'
+    hostname: redis
+    networks:
+      - exams
+
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
+    container_name: exams_app
     hostname: app
     stdin_open: true
     expose:
@@ -31,11 +38,14 @@ services:
       - .env:/app/.env
       - /tmp:/tmp
     command: bash -c "gunicorn backend.wsgi:application -b 0.0.0.0:8000"
+    depends_on:
+      - redis
+      - db
     networks:
       - exams
 
   nginx:
-    container_name: nginx
+    container_name: exams_nginx
     image: nginx
     hostname: nginx
     ports:
@@ -48,7 +58,7 @@ services:
       - exams
 
   pgadmin:
-    container_name: pgadmin
+    container_name: exams_pgadmin
     image: dpage/pgadmin4
     restart: unless-stopped
     volumes:
@@ -63,13 +73,41 @@ services:
       - exams
 
   mailhog:
-    container_name: mailhog
+    container_name: exams_mailhog
     image: mailhog/mailhog
     logging:
       driver: 'none'  # disable saving logs
     ports:
       - 1025:1025 # smtp server
       - 8025:8025 # web ui
+    networks:
+      - exams
+
+  celery:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: exams_celery
+    command: "celery -A backend worker -l info"
+    depends_on:
+      - app
+      - redis
+      - db
+    networks:
+      - exams
+
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: exams_flower
+    environment:
+      - FLOWER_PORT=8888
+    command: "celery -A backend flower --address=0.0.0.0"
+    ports:
+      - 8888:8888
+    depends_on:
+      - celery
     networks:
       - exams
 
